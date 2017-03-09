@@ -43,7 +43,9 @@
 </head>
 
 <body>
-
+<script type="text/javascript">
+    window.onload = getAllGISProjectMeta();
+</script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -74,9 +76,9 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-
+<div class="nav" id="projects">
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a onclick=getAllGISProjectMeta()><i class="fa fa-edit fa-fw"></i> Forms</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -143,7 +145,7 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
+                        </li></div>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -176,6 +178,20 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript" src='getDir.js'>
+//         function getAllGISProjectMeta() {
+//     $.ajax({
+//         url: "http://10.171.6.157:8280/CityObjectServer/query/getUserGISProjects.php",
+//         type: "POST",
+//         data: {"owner": "asf@qq.com"},
+//         dataType: "text",
+//         success: function(data) {
+//             var projects = JSON.parse(data);
+//             console.log(projects);            
+//         }
+//     });
+// }
+    </script>
 
 </body>
 
