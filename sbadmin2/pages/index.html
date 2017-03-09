@@ -33,6 +33,23 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
         <script src="../../Build/Cesium/Cesium.js"></script>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+
+        <script type="text/javascript" src='getDir.js'>
+</script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
     <style>
       @import url(../../Build/Cesium/Widgets/widgets.css);
       html, body, #cesiumContainer {
@@ -42,7 +59,8 @@
 
 </head>
 
-<body>
+<body>        
+
 <script type="text/javascript">
     window.onload = getAllGISProjectMeta();
 </script>
@@ -164,22 +182,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-    <script type="text/javascript" src='getDir.js'>
-//         function getAllGISProjectMeta() {
+<!-- //         function getAllGISProjectMeta() {
 //     $.ajax({
 //         url: "http://10.171.6.157:8280/CityObjectServer/query/getUserGISProjects.php",
 //         type: "POST",
@@ -190,8 +193,8 @@
 //             console.log(projects);            
 //         }
 //     });
-// }
-    </script>
+// } -->
+
 
 </body>
 
