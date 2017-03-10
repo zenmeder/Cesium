@@ -62,7 +62,7 @@
 <body>        
 
 <script type="text/javascript">
-    window.onload = getAllGISProjectMeta();
+    window.DOMContentLoaded = getAllGISProjectMeta();
 </script>
     <div id="wrapper">
 
@@ -80,7 +80,7 @@
             <!-- /.navbar-header -->
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
+            <div class="navbar--scrollspy sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
@@ -93,12 +93,9 @@
                             </span>
                             </div>
                             <!-- /input-group -->
-                        </li>
-<div class="nav" id="projects">
-                        <li>
-                            <a onclick=getAllGISProjectMeta()><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
+                        </li>   
+            <div class="nav" id="projects">
+<!--                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -120,9 +117,8 @@
                                     <a href="grid.html">Grid</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
+                        </li> -->
+<!--                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -147,12 +143,10 @@
                                             <a href="#">Third Level Item</a>
                                         </li>
                                     </ul>
-                                    <!-- /.nav-third-level -->
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
+                        </li> -->
+<!--                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -162,8 +156,8 @@
                                     <a href="login.html">Login Page</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li></div>
+                        </li> -->
+      </div>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
