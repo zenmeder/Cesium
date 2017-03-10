@@ -1,3 +1,6 @@
+/*
+   根据工程名获取工程里的项目
+*/
 function getProject(projectName, callback) {
         $.ajax({
         url: "http://10.171.6.157:8280/CityObjectServer/terriajs/getFileList.php",
@@ -12,6 +15,9 @@ function getProject(projectName, callback) {
         }
     });
 }
+/*
+    获取所有的工程
+*/
 function getAllGISProjectMeta() {
     $.ajax({
         url: "http://10.171.6.157:8280/CityObjectServer/query/getUserGISProjects.php",
@@ -22,7 +28,8 @@ function getAllGISProjectMeta() {
             var projects = JSON.parse(data);
             for (var i = projects.length - 1; i >= 0; i--) {
                       var projectName = projects[i]['projectName']; 
-                      var description = projects[i]['description'];                     // to delete
+                      var description = projects[i]['description'];                     
+                      //TODO 下面这个if语句 待删除 
                       if(projectName == 'SPKNGEN' || projectName == 'JX4BKQ'|| projectName == 'LY76IF'){
                             getProject(projectName, function(response,projectName){
                                 var inner = $("<li><a href='#' class='active'><i class='fa fa-wrench fa-fw'></i>"+projectName+"<span class='fa arrow'></span></a></li>");
@@ -30,9 +37,8 @@ function getAllGISProjectMeta() {
                                 response.forEach(function(item){
                                     var name = item.name;
                                     var a = $("<a></a>").html(name).click(function(){
-                                    // console.log(response[i]);
                                     getGISFileContent(projectName,name,viewer);
-                                  });//.appendTo($("<li></li>").appendTo($(inner)));
+                                  });
                                   var li = $("<li></li>").append(a);
                                   ul.append(li);
                                 })
@@ -69,9 +75,10 @@ function createDataSource(fileName, dataSource) {
         }
     }
 }
+/*
+    加载图层
+*/
 function getGISFileContent(projectName, fileName, viewer) {
-    // var projectName = "SPKNGEN";
-    // var fileName = "test.geojson";
     if (fileName.split(".")[1] == "kml" || fileName.split(".")[1] == "kmz")
     {
         if (fileName.split(".")[1] == "kmz")
@@ -100,8 +107,6 @@ function getGISFileContent(projectName, fileName, viewer) {
                     });
                     return;
                 }
-                // console.log(data);
-                // viewer.camera.flyHome(0);
                 var destination = 0;
                 switch (data.length)
                 {
@@ -122,9 +127,7 @@ function getGISFileContent(projectName, fileName, viewer) {
                     destination: destination
                 });
                 var dataSource = Cesium.KmlDataSource.load("projects/" + projectName + "/" + fileName, options);
-                // viewer.dataSources.removeAll();
                 viewer.dataSources.add(dataSource).then(function (dataSource) {
-                    // console.log("DataSource:", dataSource);
                     viewer.clock.shouldAnimate = false;
                     var rider = dataSource.entities.getById("tour");
                     viewer.flyTo(rider).then(function () {
@@ -155,19 +158,8 @@ function getGISFileContent(projectName, fileName, viewer) {
                     result = JSON.parse(response);
                 }
                 var dataSource = createDataSource(fileName, result);
-                // if (dataSource.contains("No"))
-                {
-                    /*bootbox.alert({
-                     title: "出错了",
-                     message: "不支持的文件类型"
-                     });*/
-                }
-                // else
-                {
-                    // othis.viewer.dataSources.removeAll();
-                    viewer.dataSources.add(dataSource);
-                    viewer.zoomTo(dataSource);
-                }
+                viewer.dataSources.add(dataSource);
+                viewer.zoomTo(dataSource);
             }
         });
     }
