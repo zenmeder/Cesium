@@ -39,7 +39,7 @@ function getAllGISProjectMeta() {
                                     var a = $("<a></a>").html(name).click(function(){
                                     getGISFileContent(projectName,name,viewer);
                                   });
-                                  var li = $("<li></li>").append(a);
+                                  var li = $("<li class='sticker sticker-color-blue'></li>").append(a);
                                   ul.append(li);
                                 })
                                 var a = $("#projects");
@@ -47,6 +47,42 @@ function getAllGISProjectMeta() {
                             });
                       }
                   }      
+        }
+    });
+}
+function getAllGISProject(){
+    $.ajax({
+        url: "http://10.171.6.157:8280/CityObjectServer/query/getUserGISProjects.php",
+        type: "POST",
+        data: {"owner": "asf@qq.com"},
+        dataType: "text",
+        success: function(data){
+            var projects = JSON.parse(data);
+            var menu = $('#menu-content');
+            for(var i=projects.length-1;i>=0;i--){
+                var projectName = projects[i]['projectName'];
+                var description = projects[i]['description'];
+                if(projectName == 'SPKNGEN' || projectName == 'JX4BKQ'|| projectName == 'LY76IF'){
+                    getProject(projectName, function(response,projectName){
+                        var li = $('<li></li>').attr({'data-toggle':'collapse','data-target':'#'+projectName}).addClass('collapsed');
+                        var a = $('<a></a>').attr('href','#').html(projectName);
+                        
+                        a.append($('<span></span>').addClass('arrow'));
+                        li.append(a);
+                        var ul = $('<ul></ul>').attr('id',projectName).addClass('sub-menu collapse');
+                            
+                        response.forEach(function(item){
+                            var name = item.name;
+                            ul.append($('<li></li>').html(name).click(function(){
+                                getGISFileContent(projectName,name,viewer);
+                                $('.active').removeClass('active');
+                                $(this).addClass('active');
+                            }));
+                        });
+                        menu.append(li).append(ul);
+                    });
+                }
+            }
         }
     });
 }
