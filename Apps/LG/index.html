@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>智慧临港</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../sbadmin2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../sbadmin2/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../sbadmin2/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../../sbadmin2/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../sbadmin2/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        
+ <!--    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <!-- sidebar-->
+    <link href='../../sbadmin2/pages/sidebar.css' rel='stylesheet'>
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="../../Build/CesiumUnminified/Cesium.js"></script>
+
+    <!-- jQuery -->
+    <script src="../../sbadmin2/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../sbadmin2/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../sbadmin2/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+
+    <script src='getdir.js'></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../../sbadmin2/dist/js/sb-admin-2.js"></script>
+    <!-- <script src='getDir.js'></script> -->
+
+    <style>
+      @import url(../../Build/Cesium/Widgets/widgets.css);
+      html, body, #cesiumContainer {
+        width: 100%; height: 100%; overflow: hidden;
+      }
+    </style>
+
+</head>
+
+<body>  
+<div class="row">      
+    <div class="col-md-3 nav-side-menu">
+        <div class="brand">智慧临港</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div id="cesiumContainer">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.DOMContentLoaded = getAllGISProject();
+</script>
+
+    <!-- /#wrapper -->
+</body>
+<script>
+    var viewer = new Cesium.Viewer('cesiumContainer');
+    var width = $(window).width()-$(".nav-side-menu").width()-30;
+    var height = $(".nav-side-menu").height();
+    $(".col-md-9").width(width+"px").css({'margin-left':$(".nav-side-menu").width()+20,'margin-bottom':30}).height(height);
+    $(".row").height(height);
+</script>
+</html>
